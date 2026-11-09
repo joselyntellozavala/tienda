@@ -62,7 +62,7 @@ public record AppConfig(
         }
         valor = valor.trim();
         if (valor.isEmpty() && !permitirVacio) {
-            throw new ConfiguracionException("Falta la clave '" + clave + "' en application.properties");
+            throw new ConfiguracionException("La clave '" + clave + "' no puede estar vacía");
         }
         return valor;
     }
