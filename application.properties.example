@@ -1,0 +1,21 @@
+# Gestor de base de datos: MYSQL o H2
+database.engine=H2
+
+# Forma de obtener conexiones
+connection.mode=DRIVER_MANAGER
+
+# Simulación: NORMAL o FALLO_TRANSACCION
+simulation.mode=NORMAL
+
+# MySQL
+mysql.url=jdbc:mysql://localhost:3307/unidad2?createDatabaseIfNotExist=truemysql.user=root
+mysql.password=CAMBIAR
+
+# H2
+h2.url=jdbc:h2:./data/unidad2
+h2.user=sa
+h2.password=
+
+# Pool HikariCP
+pool.maximumPoolSize=5
+pool.connectionTimeout=30000
