@@ -1,0 +1,85 @@
+erDiagram
+    ARTESANO ||--o{ PRODUCTO : "elabora"
+    PRODUCTO ||--o{ PRODUCTO_CATEGORIA : "se clasifica en"
+    CATEGORIA ||--o{ PRODUCTO_CATEGORIA : "agrupa"
+    PRODUCTO ||--|| INVENTARIO : "tiene"
+    PRODUCTO ||--o{ MOVIMIENTO_STOCK : "registra"
+    CLIENTE ||--o{ DIRECCION : "tiene"
+    CLIENTE ||--o{ PEDIDO : "realiza"
+    DIRECCION ||--o{ PEDIDO : "es destino de"
+    PEDIDO ||--|{ LINEA_PEDIDO : "contiene"
+    PRODUCTO ||--o{ LINEA_PEDIDO : "aparece en"
+    PEDIDO ||--o| PAGO : "se paga con"
+    PEDIDO |o--o{ MOVIMIENTO_STOCK : "origina"
+
+    ARTESANO {
+        INT id PK
+        VARCHAR nombre "NOT NULL"
+        VARCHAR especialidad
+    }
+    PRODUCTO {
+        INT id PK
+        VARCHAR nombre UK "NOT NULL"
+        INT artesano_id FK "NOT NULL"
+        DECIMAL precio "NOT NULL, >= 0"
+        VARCHAR tipo_pieza "UNICA | SERIE"
+        BOOLEAN activo "NOT NULL"
+    }
+    CATEGORIA {
+        INT id PK
+        VARCHAR nombre UK "NOT NULL"
+    }
+    PRODUCTO_CATEGORIA {
+        INT producto_id PK, FK
+        INT categoria_id PK, FK
+    }
+    INVENTARIO {
+        INT producto_id PK, FK "PK compartida"
+        INT stock_actual "NOT NULL, >= 0"
+        INT stock_minimo "NOT NULL, >= 0"
+    }
+    MOVIMIENTO_STOCK {
+        INT id PK
+        INT producto_id FK "NOT NULL"
+        VARCHAR tipo "ENTRADA_REPOSICION | SALIDA_PEDIDO | DEVOLUCION_CANCELACION"
+        INT cantidad "NOT NULL, > 0"
+        DATETIME fecha "NOT NULL"
+        INT pedido_id FK "NULL en reposiciones"
+    }
+    CLIENTE {
+        INT id PK
+        VARCHAR nombre "NOT NULL"
+        VARCHAR apellidos "NOT NULL"
+        VARCHAR email UK "NOT NULL"
+        DATE fecha_alta "NOT NULL"
+    }
+    DIRECCION {
+        INT id PK
+        INT cliente_id FK "NOT NULL"
+        VARCHAR calle "NOT NULL"
+        VARCHAR ciudad "NOT NULL"
+        VARCHAR codigo_postal "NOT NULL"
+        BOOLEAN principal "NOT NULL"
+    }
+    PEDIDO {
+        INT id PK
+        INT cliente_id FK "NOT NULL"
+        INT direccion_id FK "NOT NULL"
+        DATETIME fecha "NOT NULL"
+        VARCHAR estado "PENDIENTE | PAGADO | CANCELADO"
+    }
+    LINEA_PEDIDO {
+        INT pedido_id PK, FK
+        INT producto_id PK, FK
+        INT cantidad "NOT NULL, > 0"
+        DECIMAL precio_unitario "NOT NULL, precio al comprar"
+        DECIMAL importe "NOT NULL, cantidad x precio"
+    }
+    PAGO {
+        INT id PK
+        INT pedido_id FK, UK "NOT NULL, 1:1"
+        VARCHAR metodo "TARJETA | BIZUM | TRANSFERENCIA"
+        DECIMAL importe "NOT NULL"
+        VARCHAR estado "COMPLETADO | REEMBOLSADO"
+        DATETIME fecha "NOT NULL"
+    }
