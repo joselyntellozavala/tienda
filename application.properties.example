@@ -8,8 +8,8 @@ connection.mode=DRIVER_MANAGER
 simulation.mode=NORMAL
 
 # MySQL
-mysql.url=jdbc:mysql://localhost:3306/unidad2?
-createDatabaseIfNotExist=truemysql.user=root
+mysql.url=jdbc:mysql://localhost:3306/unidad2?createDatabaseIfNotExist=true
+mysql.user=root
 mysql.password=CAMBIAR
 
 # H2
