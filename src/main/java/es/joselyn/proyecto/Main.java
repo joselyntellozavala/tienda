@@ -1,17 +1,39 @@
 package es.joselyn.proyecto;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-public class Main {
-    static void main() {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        IO.println(String.format("Hello and welcome!"));
+import es.joselyn.proyecto.conexion.ConnectionProvider;
+import es.joselyn.proyecto.conexion.ConnectionProviderFactory;
+import es.joselyn.proyecto.config.AppConfig;
+import es.joselyn.proyecto.excepcion.ConfiguracionException;
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            IO.println("i = " + i);
+import java.sql.Connection;
+import java.sql.DatabaseMetaData;
+import java.sql.SQLException;
+
+public class Main {
+
+    public static void main(String[] args) {
+        try {
+            AppConfig config = AppConfig.cargar();
+            System.out.println("Configuración cargada: " + config);
+
+            try (ConnectionProvider proveedor = ConnectionProviderFactory.crear(config);
+                 Connection conexion = proveedor.getConnection()) {
+
+                DatabaseMetaData meta = conexion.getMetaData();
+                System.out.println("Proveedor: " + proveedor.getClass().getSimpleName());
+                System.out.println("Gestor:    " + meta.getDatabaseProductName() + " " + meta.getDatabaseProductVersion());
+                System.out.println("Driver:    " + meta.getDriverName() + " " + meta.getDriverVersion());
+                System.out.println("URL:       " + meta.getURL());
+                System.out.println("Conexión correcta.");
+            }
+
+        } catch (ConfiguracionException e) {
+            System.err.println("Error de configuración: " + e.getMessage());
+        } catch (SQLException e) {
+            System.err.println("Error de conexión: " + e.getMessage());
+            System.err.println("SQLState: " + e.getSQLState() + " | Código: " + e.getErrorCode());
+        } catch (RuntimeException e) {
+            System.err.println("No se pudo iniciar el pool: " + e.getMessage());
         }
     }
 }
