@@ -4,6 +4,8 @@ import es.joselyn.proyecto.conexion.ConnectionProvider;
 import es.joselyn.proyecto.conexion.ConnectionProviderFactory;
 import es.joselyn.proyecto.config.AppConfig;
 import es.joselyn.proyecto.excepcion.ConfiguracionException;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
@@ -11,29 +13,33 @@ import java.sql.SQLException;
 
 public class Main {
 
+    private static final Logger log = LogManager.getLogger(Main.class);
+
     public static void main(String[] args) {
+        log.info("Arranque de la aplicación");
         try {
             AppConfig config = AppConfig.cargar();
-            System.out.println("Configuración cargada: " + config);
+            log.info("Gestor={}, conexiones={}, simulacion={}", config.gestorBaseDatos(), config.modoConexion(), config.modoSimulacion());
+            log.debug("Configuración completa: {}", config);
 
             try (ConnectionProvider proveedor = ConnectionProviderFactory.crear(config);
                  Connection conexion = proveedor.getConnection()) {
 
                 DatabaseMetaData meta = conexion.getMetaData();
-                System.out.println("Proveedor: " + proveedor.getClass().getSimpleName());
-                System.out.println("Gestor:    " + meta.getDatabaseProductName() + " " + meta.getDatabaseProductVersion());
-                System.out.println("Driver:    " + meta.getDriverName() + " " + meta.getDriverVersion());
-                System.out.println("URL:       " + meta.getURL());
-                System.out.println("Conexión correcta.");
+                log.info("Conexión establecida con {} {} mediante {}",
+                        meta.getDatabaseProductName(), meta.getDatabaseProductVersion(),
+                        proveedor.getClass().getSimpleName());
+                log.debug("Driver: {} {} | URL: {}", meta.getDriverName(), meta.getDriverVersion(), meta.getURL());
             }
+            log.info("Fin de la aplicación");
 
         } catch (ConfiguracionException e) {
-            System.err.println("Error de configuración: " + e.getMessage());
+            log.error("Error de configuración: {}", e.getMessage());
         } catch (SQLException e) {
-            System.err.println("Error de conexión: " + e.getMessage());
-            System.err.println("SQLState: " + e.getSQLState() + " | Código: " + e.getErrorCode());
+            log.error("Error de conexión: {} | SQLState={} | código={}",
+                    e.getMessage(), e.getSQLState(), e.getErrorCode(), e);
         } catch (RuntimeException e) {
-            System.err.println("No se pudo iniciar el pool: " + e.getMessage());
+            log.error("No se pudo iniciar el pool de conexiones", e);
         }
     }
 }
