@@ -57,7 +57,7 @@ CREATE TABLE direccion (
 
 
 CREATE TABLE producto_categoria (
-    producto_id  INT NOT NULL,
+    producto_id INT NOT NULL,
     categoria_id INT NOT NULL,
     CONSTRAINT pk_producto_categoria PRIMARY KEY (producto_id, categoria_id),
     CONSTRAINT fk_producto_categoria_producto FOREIGN KEY (producto_id) REFERENCES producto (id),
@@ -65,7 +65,7 @@ CREATE TABLE producto_categoria (
 );
 
 CREATE TABLE inventario (
-    producto_id  INT NOT NULL,
+    producto_id INT NOT NULL,
     stock_actual INT NOT NULL,
     stock_minimo INT NOT NULL,
     CONSTRAINT pk_inventario PRIMARY KEY (producto_id),
