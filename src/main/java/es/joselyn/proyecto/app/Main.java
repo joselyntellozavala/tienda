@@ -3,7 +3,8 @@ package es.joselyn.proyecto.app;
 import es.joselyn.proyecto.conexion.ConnectionProvider;
 import es.joselyn.proyecto.conexion.ConnectionProviderFactory;
 import es.joselyn.proyecto.config.AppConfig;
-import es.joselyn.proyecto.database.InicializadorEsquema;   // ← 1. import nuevo
+import es.joselyn.proyecto.database.InicializadorEsquema;
+import es.joselyn.proyecto.database.CargaInicial;
 import es.joselyn.proyecto.excepcion.ConfiguracionException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -34,6 +35,7 @@ public class Main {
                 }
 
                 new InicializadorEsquema(proveedor, config.gestorBaseDatos()).reconstruir();
+                new CargaInicial(proveedor).cargar();
             }
             log.info("Fin de la aplicación");
 
