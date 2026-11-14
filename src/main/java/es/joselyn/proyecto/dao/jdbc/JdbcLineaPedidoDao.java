@@ -5,6 +5,7 @@ import es.joselyn.proyecto.modelo.LineaPedido;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -52,5 +53,17 @@ public class JdbcLineaPedidoDao implements LineaPedidoDao {
             }
         }
         return lineas;
+    }
+
+    @Override
+    public BigDecimal calcularTotal(Connection conexion, int pedidoId) throws SQLException {
+        String sql = "SELECT COALESCE(SUM(importe), 0) AS total FROM linea_pedido WHERE pedido_id = ?";
+        try (PreparedStatement ps = conexion.prepareStatement(sql)) {
+            ps.setInt(1, pedidoId);
+            try (ResultSet rs = ps.executeQuery()) {
+                rs.next();
+                return rs.getBigDecimal("total");
+            }
+        }
     }
 }
