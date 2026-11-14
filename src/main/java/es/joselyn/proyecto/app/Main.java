@@ -1,4 +1,4 @@
-package es.joselyn.proyecto;
+package es.joselyn.proyecto.app;
 
 import es.joselyn.proyecto.conexion.ConnectionProvider;
 import es.joselyn.proyecto.conexion.ConnectionProviderFactory;
