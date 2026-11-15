@@ -2,6 +2,8 @@ package es.joselyn.proyecto.dao.jdbc;
 
 import es.joselyn.proyecto.dao.ClienteDao;
 import es.joselyn.proyecto.modelo.Cliente;
+import es.joselyn.proyecto.modelo.ClienteConDireccionesDTO;
+import es.joselyn.proyecto.modelo.Direccion;
 import es.joselyn.proyecto.modelo.NuevoCliente;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -69,6 +71,38 @@ public class JdbcClienteDao implements ClienteDao {
             }
         }
         return clientes;
+    }
+
+    @Override
+    public ClienteConDireccionesDTO buscarConDirecciones(Connection conexion, int clienteId) throws SQLException {
+        String sql = "SELECT c.id, c.nombre, c.apellidos, c.email, c.fecha_alta,"
+                + " d.id AS direccion_id, d.calle, d.ciudad, d.codigo_postal, d.principal"
+                + " FROM cliente c"
+                + " LEFT JOIN direccion d ON d.cliente_id = c.id"
+                + " WHERE c.id = ?"
+                + " ORDER BY d.principal DESC, d.id";
+        try (PreparedStatement ps = conexion.prepareStatement(sql)) {
+            ps.setInt(1, clienteId);
+            try (ResultSet rs = ps.executeQuery()) {
+                ClienteConDireccionesDTO resultado = null;
+                while (rs.next()) {
+                    if (resultado == null) {
+                        resultado = new ClienteConDireccionesDTO(mapear(rs), new ArrayList<>());
+                    }
+                    Integer direccionId = rs.getObject("direccion_id", Integer.class);
+                    if (direccionId != null) {
+                        resultado.direcciones().add(new Direccion(
+                                direccionId,
+                                clienteId,
+                                rs.getString("calle"),
+                                rs.getString("ciudad"),
+                                rs.getString("codigo_postal"),
+                                rs.getBoolean("principal")));
+                    }
+                }
+                return resultado;
+            }
+        }
     }
 
     private Cliente mapear(ResultSet rs) throws SQLException {

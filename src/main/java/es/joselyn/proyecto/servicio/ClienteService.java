@@ -5,6 +5,7 @@ import es.joselyn.proyecto.dao.ClienteDao;
 import es.joselyn.proyecto.dao.DireccionDao;
 import es.joselyn.proyecto.excepcion.NegocioException;
 import es.joselyn.proyecto.modelo.Cliente;
+import es.joselyn.proyecto.modelo.ClienteConDireccionesDTO;
 import es.joselyn.proyecto.modelo.Direccion;
 import es.joselyn.proyecto.modelo.NuevaDireccion;
 import es.joselyn.proyecto.modelo.NuevoCliente;
@@ -70,6 +71,12 @@ public class ClienteService {
     public List<Direccion> direccionesDe(int clienteId) throws SQLException {
         try (Connection conexion = proveedor.getConnection()) {
             return direccionDao.buscarPorCliente(conexion, clienteId);
+        }
+    }
+
+    public ClienteConDireccionesDTO buscarConDirecciones(int clienteId) throws SQLException {
+        try (Connection conexion = proveedor.getConnection()) {
+            return clienteDao.buscarConDirecciones(conexion, clienteId);
         }
     }
 }
