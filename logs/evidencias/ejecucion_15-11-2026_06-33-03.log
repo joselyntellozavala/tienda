@@ -1,0 +1,64 @@
+15/11/2026 06:33:03.179 INFO  Main - Arranque de la aplicación
+15/11/2026 06:33:03.201 INFO  Main - Gestor=H2, conexiones=DRIVER_MANAGER, simulacion=FALLO_TRANSACCION
+15/11/2026 06:33:03.203 DEBUG Main - Configuración completa: AppConfig[gestorBaseDatos=H2, conexiones=DRIVER_MANAGER, simulacion=FALLO_TRANSACCION, url=jdbc:h2:./data/unidad2, usuario=sa, pool=5]
+15/11/2026 06:33:03.535 INFO  Main - Conexión establecida con H2 2.5.252 (2026-09-23) mediante DriverManagerConnectionProvider
+15/11/2026 06:33:03.535 DEBUG Main - Driver: H2 JDBC Driver 2.5.252 (2026-09-23) | URL: jdbc:h2:./data/unidad2
+15/11/2026 06:33:03.552 INFO  InicializadorEsquema - Reconstruyendo el esquema con sql/esquema-h2.sql
+15/11/2026 06:33:03.597 DEBUG InicializadorEsquema - Ejecutando: DROP TABLE IF EXISTS movimiento_stock
+15/11/2026 06:33:03.602 DEBUG InicializadorEsquema - Ejecutando: DROP TABLE IF EXISTS pago
+15/11/2026 06:33:03.604 DEBUG InicializadorEsquema - Ejecutando: DROP TABLE IF EXISTS linea_pedido
+15/11/2026 06:33:03.606 DEBUG InicializadorEsquema - Ejecutando: DROP TABLE IF EXISTS pedido
+15/11/2026 06:33:03.607 DEBUG InicializadorEsquema - Ejecutando: DROP TABLE IF EXISTS direccion
+15/11/2026 06:33:03.608 DEBUG InicializadorEsquema - Ejecutando: DROP TABLE IF EXISTS inventario
+15/11/2026 06:33:03.608 DEBUG InicializadorEsquema - Ejecutando: DROP TABLE IF EXISTS producto_categoria
+15/11/2026 06:33:03.610 DEBUG InicializadorEsquema - Ejecutando: DROP TABLE IF EXISTS producto
+15/11/2026 06:33:03.611 DEBUG InicializadorEsquema - Ejecutando: DROP TABLE IF EXISTS cliente
+15/11/2026 06:33:03.612 DEBUG InicializadorEsquema - Ejecutando: DROP TABLE IF EXISTS categoria
+15/11/2026 06:33:03.613 DEBUG InicializadorEsquema - Ejecutando: DROP TABLE IF EXISTS artesano
+15/11/2026 06:33:03.614 DEBUG InicializadorEsquema - Ejecutando: CREATE TABLE artesano (
+15/11/2026 06:33:03.621 DEBUG InicializadorEsquema - Ejecutando: CREATE TABLE categoria (
+15/11/2026 06:33:03.623 DEBUG InicializadorEsquema - Ejecutando: CREATE TABLE cliente (
+15/11/2026 06:33:03.625 DEBUG InicializadorEsquema - Ejecutando: CREATE TABLE producto (
+15/11/2026 06:33:03.641 DEBUG InicializadorEsquema - Ejecutando: CREATE TABLE direccion (
+15/11/2026 06:33:03.644 DEBUG InicializadorEsquema - Ejecutando: CREATE TABLE producto_categoria (
+15/11/2026 06:33:03.648 DEBUG InicializadorEsquema - Ejecutando: CREATE TABLE inventario (
+15/11/2026 06:33:03.650 DEBUG InicializadorEsquema - Ejecutando: CREATE TABLE pedido (
+15/11/2026 06:33:03.654 DEBUG InicializadorEsquema - Ejecutando: CREATE TABLE linea_pedido (
+15/11/2026 06:33:03.660 DEBUG InicializadorEsquema - Ejecutando: CREATE TABLE pago (
+15/11/2026 06:33:03.666 DEBUG InicializadorEsquema - Ejecutando: CREATE TABLE movimiento_stock (
+15/11/2026 06:33:03.676 INFO  InicializadorEsquema - Esquema reconstruido: 22 sentencias ejecutadas
+15/11/2026 06:33:03.676 INFO  InicializadorEsquema - H2: el procedimiento almacenado es específico de MySQL y no se crea
+15/11/2026 06:33:03.677 INFO  CargaInicial - Inicio de la carga inicial
+15/11/2026 06:33:03.715 INFO  CargaInicial - Lote artesano: 4 filas
+15/11/2026 06:33:03.715 DEBUG CargaInicial - Ids generados en artesano: {Lucía Ferrer=1, Mateo Ruiz=2, Inés Calvo=3, Tomás Vidal=4}
+15/11/2026 06:33:03.717 INFO  CargaInicial - Lote categoria: 4 filas
+15/11/2026 06:33:03.717 DEBUG CargaInicial - Ids generados en categoria: {Mesa=1, Café y té=2, Decoración=3, Regalos=4}
+15/11/2026 06:33:03.721 INFO  CargaInicial - Lote producto: 14 filas
+15/11/2026 06:33:03.721 DEBUG CargaInicial - Ids generados en producto: {Taza Luna=1, Taza Bruma=2, Tetera Alba=3, Plato llano Arena=4, Plato hondo Arena=5, Bowl Marea=6, Fuente Salitre=7, Jarra Olivo=8, Portavelas Duna=9, Jarrón Raíz=10, Jarrón Eclipse=11, Escultura Ola=12, Fuente Volcán=13, Taza Cometa=14}
+15/11/2026 06:33:03.725 INFO  CargaInicial - Lote producto_categoria: 22 filas
+15/11/2026 06:33:03.726 INFO  CargaInicial - Lote inventario: 14 filas
+15/11/2026 06:33:03.731 INFO  CargaInicial - Lote cliente: 5 filas
+15/11/2026 06:33:03.731 DEBUG CargaInicial - Ids generados en cliente: {ana.morales@correo.es=1, diego.navarro@correo.es=2, carmen.soto@correo.es=3, hugo.martin@correo.es=4, elena.rios@correo.es=5}
+15/11/2026 06:33:03.732 INFO  CargaInicial - Lote direccion: 7 filas
+15/11/2026 06:33:03.733 INFO  CargaInicial - Carga inicial confirmada (commit)
+15/11/2026 06:33:04.212 INFO  Simulacion - === FALLO_TRANSACCION ===
+15/11/2026 06:33:04.213 INFO  Simulacion - Stock antes: Tetera Alba=6, Plato llano Arena=30
+15/11/2026 06:33:04.214 INFO  PedidoService - Inicio pedido cliente=2 lineas=2
+15/11/2026 06:33:04.263 DEBUG JdbcPedidoDao - Pedido insertado id=1 cliente=2
+15/11/2026 06:33:04.265 DEBUG JdbcLineaPedidoDao - Línea insertada pedido=1 producto=3 cantidad=2
+15/11/2026 06:33:04.275 DEBUG JdbcInventarioDao - Stock -2 producto=3 filas=1
+15/11/2026 06:33:04.278 DEBUG JdbcMovimientoStockDao - Movimiento insertado id=1 tipo=SALIDA_PEDIDO producto=3 pedido=1
+15/11/2026 06:33:04.280 DEBUG JdbcLineaPedidoDao - Línea insertada pedido=1 producto=4 cantidad=3
+15/11/2026 06:33:04.280 DEBUG JdbcInventarioDao - Stock -3 producto=4 filas=1
+15/11/2026 06:33:04.281 DEBUG JdbcMovimientoStockDao - Movimiento insertado id=2 tipo=SALIDA_PEDIDO producto=4 pedido=1
+15/11/2026 06:33:04.282 WARN  PedidoService - Fallo controlado; se revierte pedido=1
+15/11/2026 06:33:04.283 WARN  PedidoService - Registro de pedido revertido (rollback): Fallo provocado por FALLO_TRANSACCION antes de confirmar el pedido 1
+15/11/2026 06:33:04.325 INFO  Simulacion - Excepción recibida: Fallo provocado por FALLO_TRANSACCION antes de confirmar el pedido 1
+15/11/2026 06:33:04.326 INFO  Simulacion - Comprobación en la base de datos del pedido 1
+15/11/2026 06:33:04.619 INFO  Simulacion - Pedido 1 en la tabla pedido: no existe
+15/11/2026 06:33:04.619 INFO  Simulacion - Líneas del pedido 1: 0
+15/11/2026 06:33:04.619 INFO  Simulacion - Movimientos del pedido 1: 0
+15/11/2026 06:33:04.620 INFO  Simulacion - Stock Tetera Alba: antes=6 después=6
+15/11/2026 06:33:04.620 INFO  Simulacion - Stock Plato llano Arena: antes=30 después=30
+15/11/2026 06:33:04.620 INFO  Simulacion - Rollback verificado: no quedan cambios parciales
+15/11/2026 06:33:04.620 INFO  Main - Fin de la aplicación

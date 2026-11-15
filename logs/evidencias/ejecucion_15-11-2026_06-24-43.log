@@ -1,0 +1,214 @@
+15/11/2026 06:24:43.935 INFO  Main - Arranque de la aplicación
+15/11/2026 06:24:43.947 INFO  Main - Gestor=MYSQL, conexiones=POOL, simulacion=NORMAL
+15/11/2026 06:24:43.949 DEBUG Main - Configuración completa: AppConfig[gestorBaseDatos=MYSQL, conexiones=POOL, simulacion=NORMAL, url=jdbc:mysql://localhost:3307/unidad2?createDatabaseIfNotExist=true, usuario=root, pool=5]
+15/11/2026 06:24:43.985 INFO  HikariDataSource - CalmmaPool - Starting...
+15/11/2026 06:24:44.476 INFO  HikariPool - CalmmaPool - Added connection com.mysql.cj.jdbc.ConnectionImpl@1d131e1b
+15/11/2026 06:24:44.480 INFO  HikariDataSource - CalmmaPool - Start completed.
+15/11/2026 06:24:44.485 INFO  Main - Conexión establecida con MySQL 9.7.2 mediante HikariConnectionProvider
+15/11/2026 06:24:44.485 DEBUG Main - Driver: MySQL Connector/J mysql-connector-j-26.10.0 (Revision: fac9201148ebe3f84a5754cb86ebbacaf1cdce7f) | URL: jdbc:mysql://localhost:3307/unidad2?createDatabaseIfNotExist=true
+15/11/2026 06:24:44.496 INFO  InicializadorEsquema - Reconstruyendo el esquema con sql/esquema-mysql.sql
+15/11/2026 06:24:44.507 DEBUG InicializadorEsquema - Ejecutando: DROP TABLE IF EXISTS movimiento_stock
+15/11/2026 06:24:44.542 DEBUG InicializadorEsquema - Ejecutando: DROP TABLE IF EXISTS pago
+15/11/2026 06:24:44.552 DEBUG InicializadorEsquema - Ejecutando: DROP TABLE IF EXISTS linea_pedido
+15/11/2026 06:24:44.565 DEBUG InicializadorEsquema - Ejecutando: DROP TABLE IF EXISTS pedido
+15/11/2026 06:24:44.578 DEBUG InicializadorEsquema - Ejecutando: DROP TABLE IF EXISTS direccion
+15/11/2026 06:24:44.593 DEBUG InicializadorEsquema - Ejecutando: DROP TABLE IF EXISTS inventario
+15/11/2026 06:24:44.604 DEBUG InicializadorEsquema - Ejecutando: DROP TABLE IF EXISTS producto_categoria
+15/11/2026 06:24:44.619 DEBUG InicializadorEsquema - Ejecutando: DROP TABLE IF EXISTS producto
+15/11/2026 06:24:44.629 DEBUG InicializadorEsquema - Ejecutando: DROP TABLE IF EXISTS cliente
+15/11/2026 06:24:44.637 DEBUG InicializadorEsquema - Ejecutando: DROP TABLE IF EXISTS categoria
+15/11/2026 06:24:44.644 DEBUG InicializadorEsquema - Ejecutando: DROP TABLE IF EXISTS artesano
+15/11/2026 06:24:44.653 DEBUG InicializadorEsquema - Ejecutando: CREATE TABLE artesano (
+15/11/2026 06:24:44.666 DEBUG InicializadorEsquema - Ejecutando: CREATE TABLE categoria (
+15/11/2026 06:24:44.685 DEBUG InicializadorEsquema - Ejecutando: CREATE TABLE cliente (
+15/11/2026 06:24:44.703 DEBUG InicializadorEsquema - Ejecutando: CREATE TABLE producto (
+15/11/2026 06:24:44.732 DEBUG InicializadorEsquema - Ejecutando: CREATE TABLE direccion (
+15/11/2026 06:24:44.776 DEBUG InicializadorEsquema - Ejecutando: CREATE TABLE producto_categoria (
+15/11/2026 06:24:44.795 DEBUG InicializadorEsquema - Ejecutando: CREATE TABLE inventario (
+15/11/2026 06:24:44.808 DEBUG InicializadorEsquema - Ejecutando: CREATE TABLE pedido (
+15/11/2026 06:24:44.834 DEBUG InicializadorEsquema - Ejecutando: CREATE TABLE linea_pedido (
+15/11/2026 06:24:44.857 DEBUG InicializadorEsquema - Ejecutando: CREATE TABLE pago (
+15/11/2026 06:24:44.886 DEBUG InicializadorEsquema - Ejecutando: CREATE TABLE movimiento_stock (
+15/11/2026 06:24:44.909 INFO  InicializadorEsquema - Esquema reconstruido: 22 sentencias ejecutadas
+15/11/2026 06:24:44.909 INFO  InicializadorEsquema - Creando los procedimientos almacenados con sql/procedimientos-mysql.sql
+15/11/2026 06:24:44.912 DEBUG InicializadorEsquema - Ejecutando: DROP PROCEDURE IF EXISTS resumen_ventas_producto
+15/11/2026 06:24:44.917 DEBUG InicializadorEsquema - Ejecutando: CREATE PROCEDURE resumen_ventas_producto(
+15/11/2026 06:24:44.920 INFO  InicializadorEsquema - Procedimientos creados: 2 sentencias ejecutadas
+15/11/2026 06:24:44.921 INFO  CargaInicial - Inicio de la carga inicial
+15/11/2026 06:24:44.958 INFO  CargaInicial - Lote artesano: 4 filas
+15/11/2026 06:24:44.959 DEBUG CargaInicial - Ids generados en artesano: {Lucía Ferrer=1, Mateo Ruiz=2, Inés Calvo=3, Tomás Vidal=4}
+15/11/2026 06:24:44.964 INFO  CargaInicial - Lote categoria: 4 filas
+15/11/2026 06:24:44.964 DEBUG CargaInicial - Ids generados en categoria: {Mesa=1, Café y té=2, Decoración=3, Regalos=4}
+15/11/2026 06:24:44.978 INFO  CargaInicial - Lote producto: 14 filas
+15/11/2026 06:24:44.978 DEBUG CargaInicial - Ids generados en producto: {Taza Luna=1, Taza Bruma=2, Tetera Alba=3, Plato llano Arena=4, Plato hondo Arena=5, Bowl Marea=6, Fuente Salitre=7, Jarra Olivo=8, Portavelas Duna=9, Jarrón Raíz=10, Jarrón Eclipse=11, Escultura Ola=12, Fuente Volcán=13, Taza Cometa=14}
+15/11/2026 06:24:44.991 INFO  CargaInicial - Lote producto_categoria: 22 filas
+15/11/2026 06:24:44.998 INFO  CargaInicial - Lote inventario: 14 filas
+15/11/2026 06:24:45.007 INFO  CargaInicial - Lote cliente: 5 filas
+15/11/2026 06:24:45.007 DEBUG CargaInicial - Ids generados en cliente: {ana.morales@correo.es=1, diego.navarro@correo.es=2, carmen.soto@correo.es=3, hugo.martin@correo.es=4, elena.rios@correo.es=5}
+15/11/2026 06:24:45.014 INFO  CargaInicial - Lote direccion: 7 filas
+15/11/2026 06:24:45.017 INFO  CargaInicial - Carga inicial confirmada (commit)
+15/11/2026 06:24:45.041 INFO  Simulacion - === Registro de un pedido ===
+15/11/2026 06:24:45.042 INFO  Simulacion - Stock de Taza Luna: 25
+15/11/2026 06:24:45.043 INFO  Simulacion - Stock de Bowl Marea: 18
+15/11/2026 06:24:45.045 INFO  PedidoService - Inicio pedido cliente=1 lineas=2
+15/11/2026 06:24:45.056 DEBUG JdbcPedidoDao - Pedido insertado id=1 cliente=1
+15/11/2026 06:24:45.058 DEBUG JdbcLineaPedidoDao - Línea insertada pedido=1 producto=1 cantidad=2
+15/11/2026 06:24:45.059 DEBUG JdbcInventarioDao - Stock -2 producto=1 filas=1
+15/11/2026 06:24:45.064 DEBUG JdbcMovimientoStockDao - Movimiento insertado id=1 tipo=SALIDA_PEDIDO producto=1 pedido=1
+15/11/2026 06:24:45.065 DEBUG JdbcLineaPedidoDao - Línea insertada pedido=1 producto=6 cantidad=1
+15/11/2026 06:24:45.066 DEBUG JdbcInventarioDao - Stock -1 producto=6 filas=1
+15/11/2026 06:24:45.067 DEBUG JdbcMovimientoStockDao - Movimiento insertado id=2 tipo=SALIDA_PEDIDO producto=6 pedido=1
+15/11/2026 06:24:45.068 INFO  PedidoService - Pedido registrado id=1 (commit)
+15/11/2026 06:24:45.070 INFO  Simulacion - Pedido 1 en estado PENDIENTE
+15/11/2026 06:24:45.071 INFO  Simulacion - Stock de Taza Luna: 23
+15/11/2026 06:24:45.072 INFO  Simulacion - Stock de Bowl Marea: 17
+15/11/2026 06:24:45.072 INFO  Simulacion - === Pago del pedido ===
+15/11/2026 06:24:45.073 INFO  PedidoService - Inicio pago pedido=1 metodo=TARJETA
+15/11/2026 06:24:45.079 DEBUG JdbcPagoDao - Pago insertado id=1 pedido=1 estado=COMPLETADO
+15/11/2026 06:24:45.081 DEBUG JdbcPedidoDao - Pedido id=1 pasa a PAGADO filas=1
+15/11/2026 06:24:45.084 INFO  PedidoService - Pedido pagado id=1 pago=1 (commit)
+15/11/2026 06:24:45.086 INFO  Simulacion - Pago del pedido 1: TARJETA 45.80 € (COMPLETADO)
+15/11/2026 06:24:45.088 INFO  PedidoService - Inicio pago pedido=1 metodo=BIZUM
+15/11/2026 06:24:45.092 WARN  PedidoService - Pago revertido (rollback) pedido=1: El pedido 1 no se puede pagar porque está PAGADO
+15/11/2026 06:24:45.093 INFO  Simulacion - Pagar otra vez el pedido 1: rechazado. El pedido 1 no se puede pagar porque está PAGADO
+15/11/2026 06:24:45.093 INFO  Simulacion - === Cancelación del pedido ===
+15/11/2026 06:24:45.093 INFO  PedidoService - Inicio cancelación pedido=1
+15/11/2026 06:24:45.097 DEBUG JdbcInventarioDao - Stock +2 producto=1 filas=1
+15/11/2026 06:24:45.098 DEBUG JdbcMovimientoStockDao - Movimiento insertado id=3 tipo=DEVOLUCION_CANCELACION producto=1 pedido=1
+15/11/2026 06:24:45.099 DEBUG JdbcInventarioDao - Stock +1 producto=6 filas=1
+15/11/2026 06:24:45.100 DEBUG JdbcMovimientoStockDao - Movimiento insertado id=4 tipo=DEVOLUCION_CANCELACION producto=6 pedido=1
+15/11/2026 06:24:45.102 DEBUG JdbcPagoDao - Pago id=1 pasa a REEMBOLSADO filas=1
+15/11/2026 06:24:45.103 DEBUG JdbcPedidoDao - Pedido id=1 pasa a CANCELADO filas=1
+15/11/2026 06:24:45.105 INFO  PedidoService - Pedido cancelado id=1 (commit)
+15/11/2026 06:24:45.106 INFO  Simulacion - Pedido 1 en estado CANCELADO
+15/11/2026 06:24:45.107 INFO  Simulacion - Pago del pedido 1: TARJETA 45.80 € (REEMBOLSADO)
+15/11/2026 06:24:45.108 INFO  Simulacion - Stock de Taza Luna: 25
+15/11/2026 06:24:45.109 INFO  Simulacion - Stock de Bowl Marea: 18
+15/11/2026 06:24:45.110 INFO  PedidoService - Inicio cancelación pedido=1
+15/11/2026 06:24:45.114 WARN  PedidoService - Cancelación revertida (rollback) pedido=1: El pedido 1 ya está cancelado; no se devuelve el stock otra vez
+15/11/2026 06:24:45.114 INFO  Simulacion - Cancelar otra vez el pedido 1: rechazado. El pedido 1 ya está cancelado; no se devuelve el stock otra vez
+15/11/2026 06:24:45.116 INFO  Simulacion - Stock de Taza Luna: 25
+15/11/2026 06:24:45.116 INFO  Simulacion - === Stock insuficiente ===
+15/11/2026 06:24:45.118 INFO  PedidoService - Inicio pedido cliente=1 lineas=1
+15/11/2026 06:24:45.125 WARN  PedidoService - Registro de pedido revertido (rollback): Stock insuficiente de Taza Bruma: pedidas 5, disponibles 4
+15/11/2026 06:24:45.126 INFO  Simulacion - Pedir 5 unidades de Taza Bruma: rechazado. Stock insuficiente de Taza Bruma: pedidas 5, disponibles 4
+15/11/2026 06:24:45.126 INFO  Simulacion - === Reposición ===
+15/11/2026 06:24:45.127 INFO  InventarioService - Inicio reposición producto=2 cantidad=10
+15/11/2026 06:24:45.130 DEBUG JdbcInventarioDao - Stock +10 producto=2 filas=1
+15/11/2026 06:24:45.133 DEBUG JdbcMovimientoStockDao - Movimiento insertado id=5 tipo=ENTRADA_REPOSICION producto=2 pedido=null
+15/11/2026 06:24:45.135 INFO  InventarioService - Reposición confirmada (commit) producto=2 cantidad=10
+15/11/2026 06:24:45.137 INFO  Simulacion - Stock de Taza Bruma: 14
+15/11/2026 06:24:45.138 INFO  Simulacion - Movimientos de Taza Bruma: 1
+15/11/2026 06:24:45.139 INFO  InventarioService - Inicio reposición producto=11 cantidad=1
+15/11/2026 06:24:45.141 WARN  InventarioService - Reposición revertida (rollback) producto=11: Jarrón Eclipse es una pieza única y no se puede reponer
+15/11/2026 06:24:45.142 INFO  Simulacion - Reponer una pieza única: rechazado. Jarrón Eclipse es una pieza única y no se puede reponer
+15/11/2026 06:24:45.142 INFO  Simulacion - === Catálogo ===
+15/11/2026 06:24:45.143 INFO  CatalogoService - Inicio registro de producto categorias=2
+15/11/2026 06:24:45.148 DEBUG JdbcProductoDao - Producto insertado id=15
+15/11/2026 06:24:45.149 DEBUG JdbcInventarioDao - Inventario insertado producto=15
+15/11/2026 06:24:45.149 DEBUG JdbcProductoCategoriaDao - Categoría 1 asignada a producto=15
+15/11/2026 06:24:45.151 DEBUG JdbcProductoCategoriaDao - Categoría 4 asignada a producto=15
+15/11/2026 06:24:45.153 INFO  CatalogoService - Producto registrado id=15 (commit)
+15/11/2026 06:24:45.157 INFO  Simulacion - Cuenco Brisa id=15 stock=12 categorías=[Mesa, Regalos]
+15/11/2026 06:24:45.160 DEBUG JdbcProductoDao - Precio actualizado producto=1 filas=1
+15/11/2026 06:24:45.160 INFO  CatalogoService - Precio actualizado producto=1
+15/11/2026 06:24:45.162 INFO  Simulacion - Precio de Taza Luna: 15.90
+15/11/2026 06:24:45.162 INFO  Simulacion - === Clientes ===
+15/11/2026 06:24:45.164 INFO  ClienteService - Inicio registro de cliente
+15/11/2026 06:24:45.166 DEBUG JdbcClienteDao - Cliente insertado id=6
+15/11/2026 06:24:45.168 DEBUG JdbcDireccionDao - Dirección insertada id=8 cliente=6
+15/11/2026 06:24:45.170 INFO  ClienteService - Cliente registrado id=6 (commit)
+15/11/2026 06:24:45.172 INFO  Simulacion - Cliente 6 registrado con 1 dirección(es)
+15/11/2026 06:24:45.172 INFO  ClienteService - Inicio registro de cliente
+15/11/2026 06:24:45.198 WARN  ClienteService - Registro de cliente revertido (rollback): Duplicate entry 'sara.lozano@correo.es' for key 'cliente.uk_cliente_email'
+15/11/2026 06:24:45.199 WARN  Simulacion - Violación de integridad: mensaje=Duplicate entry 'sara.lozano@correo.es' for key 'cliente.uk_cliente_email' | SQLState=23000 | código=1062
+15/11/2026 06:24:45.199 INFO  Simulacion - === Más pedidos para las consultas ===
+15/11/2026 06:24:45.205 INFO  PedidoService - Inicio pedido cliente=3 lineas=3
+15/11/2026 06:24:45.213 DEBUG JdbcPedidoDao - Pedido insertado id=2 cliente=3
+15/11/2026 06:24:45.214 DEBUG JdbcLineaPedidoDao - Línea insertada pedido=2 producto=1 cantidad=3
+15/11/2026 06:24:45.215 DEBUG JdbcInventarioDao - Stock -3 producto=1 filas=1
+15/11/2026 06:24:45.216 DEBUG JdbcMovimientoStockDao - Movimiento insertado id=6 tipo=SALIDA_PEDIDO producto=1 pedido=2
+15/11/2026 06:24:45.217 DEBUG JdbcLineaPedidoDao - Línea insertada pedido=2 producto=12 cantidad=1
+15/11/2026 06:24:45.218 DEBUG JdbcInventarioDao - Stock -1 producto=12 filas=1
+15/11/2026 06:24:45.218 DEBUG JdbcMovimientoStockDao - Movimiento insertado id=7 tipo=SALIDA_PEDIDO producto=12 pedido=2
+15/11/2026 06:24:45.219 DEBUG JdbcLineaPedidoDao - Línea insertada pedido=2 producto=9 cantidad=2
+15/11/2026 06:24:45.220 DEBUG JdbcInventarioDao - Stock -2 producto=9 filas=1
+15/11/2026 06:24:45.221 DEBUG JdbcMovimientoStockDao - Movimiento insertado id=8 tipo=SALIDA_PEDIDO producto=9 pedido=2
+15/11/2026 06:24:45.223 INFO  PedidoService - Pedido registrado id=2 (commit)
+15/11/2026 06:24:45.224 INFO  PedidoService - Inicio pago pedido=2 metodo=BIZUM
+15/11/2026 06:24:45.227 DEBUG JdbcPagoDao - Pago insertado id=2 pedido=2 estado=COMPLETADO
+15/11/2026 06:24:45.228 DEBUG JdbcPedidoDao - Pedido id=2 pasa a PAGADO filas=1
+15/11/2026 06:24:45.229 INFO  PedidoService - Pedido pagado id=2 pago=2 (commit)
+15/11/2026 06:24:45.233 INFO  PedidoService - Inicio pedido cliente=4 lineas=2
+15/11/2026 06:24:45.238 DEBUG JdbcPedidoDao - Pedido insertado id=3 cliente=4
+15/11/2026 06:24:45.238 DEBUG JdbcLineaPedidoDao - Línea insertada pedido=3 producto=4 cantidad=4
+15/11/2026 06:24:45.239 DEBUG JdbcInventarioDao - Stock -4 producto=4 filas=1
+15/11/2026 06:24:45.240 DEBUG JdbcMovimientoStockDao - Movimiento insertado id=9 tipo=SALIDA_PEDIDO producto=4 pedido=3
+15/11/2026 06:24:45.240 DEBUG JdbcLineaPedidoDao - Línea insertada pedido=3 producto=6 cantidad=2
+15/11/2026 06:24:45.241 DEBUG JdbcInventarioDao - Stock -2 producto=6 filas=1
+15/11/2026 06:24:45.242 DEBUG JdbcMovimientoStockDao - Movimiento insertado id=10 tipo=SALIDA_PEDIDO producto=6 pedido=3
+15/11/2026 06:24:45.244 INFO  PedidoService - Pedido registrado id=3 (commit)
+15/11/2026 06:24:45.244 INFO  PedidoService - Inicio pago pedido=3 metodo=TARJETA
+15/11/2026 06:24:45.247 DEBUG JdbcPagoDao - Pago insertado id=3 pedido=3 estado=COMPLETADO
+15/11/2026 06:24:45.248 DEBUG JdbcPedidoDao - Pedido id=3 pasa a PAGADO filas=1
+15/11/2026 06:24:45.250 INFO  PedidoService - Pedido pagado id=3 pago=3 (commit)
+15/11/2026 06:24:45.253 INFO  PedidoService - Inicio pedido cliente=1 lineas=2
+15/11/2026 06:24:45.258 DEBUG JdbcPedidoDao - Pedido insertado id=4 cliente=1
+15/11/2026 06:24:45.258 DEBUG JdbcLineaPedidoDao - Línea insertada pedido=4 producto=2 cantidad=2
+15/11/2026 06:24:45.260 DEBUG JdbcInventarioDao - Stock -2 producto=2 filas=1
+15/11/2026 06:24:45.260 DEBUG JdbcMovimientoStockDao - Movimiento insertado id=11 tipo=SALIDA_PEDIDO producto=2 pedido=4
+15/11/2026 06:24:45.261 DEBUG JdbcLineaPedidoDao - Línea insertada pedido=4 producto=8 cantidad=1
+15/11/2026 06:24:45.262 DEBUG JdbcInventarioDao - Stock -1 producto=8 filas=1
+15/11/2026 06:24:45.264 DEBUG JdbcMovimientoStockDao - Movimiento insertado id=12 tipo=SALIDA_PEDIDO producto=8 pedido=4
+15/11/2026 06:24:45.266 INFO  PedidoService - Pedido registrado id=4 (commit)
+15/11/2026 06:24:45.267 INFO  Simulacion - === Catálogo filtrado y paginado ===
+15/11/2026 06:24:45.271 INFO  Simulacion - Categoría Café y té: página 2 de 3 (5 productos)
+15/11/2026 06:24:45.272 INFO  Simulacion -   Taza Cometa · Lucía Ferrer · 22.00 € · UNICA · stock 1
+15/11/2026 06:24:45.272 INFO  Simulacion -   Jarra Olivo · Tomás Vidal · 29.90 € · SERIE · stock 1
+15/11/2026 06:24:45.275 INFO  Simulacion - Entre 15 y 100 €, solo disponibles: página 1 de 2 (10 productos)
+15/11/2026 06:24:45.275 INFO  Simulacion -   Taza Luna · Lucía Ferrer · 15.90 € · SERIE · stock 22
+15/11/2026 06:24:45.275 INFO  Simulacion -   Bowl Marea · Mateo Ruiz · 16.00 € · SERIE · stock 16
+15/11/2026 06:24:45.275 INFO  Simulacion -   Cuenco Brisa · Lucía Ferrer · 17.50 € · SERIE · stock 12
+15/11/2026 06:24:45.275 INFO  Simulacion -   Plato llano Arena · Mateo Ruiz · 18.00 € · SERIE · stock 26
+15/11/2026 06:24:45.275 INFO  Simulacion -   Plato hondo Arena · Mateo Ruiz · 19.50 € · SERIE · stock 5
+15/11/2026 06:24:45.275 INFO  Simulacion - === Detalle de pedido ===
+15/11/2026 06:24:45.278 INFO  Simulacion - Pedido 1 · Ana Morales Gil · 2026-11-15T06:24:45 · CANCELADO · envío a Calle Mayor 12, Madrid
+15/11/2026 06:24:45.278 INFO  Simulacion -   1 × Bowl Marea a 16.00 € = 16.00 €
+15/11/2026 06:24:45.280 INFO  Simulacion -   2 × Taza Luna a 14.90 € = 29.80 €
+15/11/2026 06:24:45.280 INFO  Simulacion -   Total: 45.80 €
+15/11/2026 06:24:45.281 INFO  Simulacion - Pedido 2 · Carmen Soto Díaz · 2026-11-15T06:24:45 · PAGADO · envío a Calle Colón 8, Valencia
+15/11/2026 06:24:45.282 INFO  Simulacion -   1 × Escultura Ola a 95.00 € = 95.00 €
+15/11/2026 06:24:45.282 INFO  Simulacion -   2 × Portavelas Duna a 9.50 € = 19.00 €
+15/11/2026 06:24:45.282 INFO  Simulacion -   3 × Taza Luna a 15.90 € = 47.70 €
+15/11/2026 06:24:45.282 INFO  Simulacion -   Total: 161.70 €
+15/11/2026 06:24:45.282 INFO  Simulacion - === Historial de cliente ===
+15/11/2026 06:24:45.285 INFO  Simulacion - Ana Morales Gil: 2 pedido(s)
+15/11/2026 06:24:45.285 INFO  Simulacion -   Pedido 4 · 2026-11-15T06:24:45 · PENDIENTE · 2 producto(s), 3 unidad(es) · 56.90 € · pago: sin pago
+15/11/2026 06:24:45.285 INFO  Simulacion -   Pedido 1 · 2026-11-15T06:24:45 · CANCELADO · 2 producto(s), 3 unidad(es) · 45.80 € · pago: REEMBOLSADO
+15/11/2026 06:24:45.286 INFO  Simulacion - === Resumen comercial: productos más vendidos ===
+15/11/2026 06:24:45.287 INFO  Simulacion -   Plato llano Arena: 4 unidad(es) en 1 pedido(s) · 72.00 €
+15/11/2026 06:24:45.288 INFO  Simulacion -   Taza Luna: 3 unidad(es) en 1 pedido(s) · 47.70 €
+15/11/2026 06:24:45.288 INFO  Simulacion -   Bowl Marea: 2 unidad(es) en 1 pedido(s) · 32.00 €
+15/11/2026 06:24:45.288 INFO  Simulacion -   Taza Bruma: 2 unidad(es) en 1 pedido(s) · 27.00 €
+15/11/2026 06:24:45.288 INFO  Simulacion -   Portavelas Duna: 2 unidad(es) en 1 pedido(s) · 19.00 €
+15/11/2026 06:24:45.288 INFO  Simulacion - === Control de existencias ===
+15/11/2026 06:24:45.290 INFO  Simulacion -   Plato hondo Arena: stock 5 / mínimo 12 → reponer 7
+15/11/2026 06:24:45.290 INFO  Simulacion -   Jarra Olivo: stock 1 / mínimo 5 → reponer 4
+15/11/2026 06:24:45.291 INFO  Simulacion - Movimientos de Taza Bruma:
+15/11/2026 06:24:45.292 INFO  Simulacion -   ENTRADA_REPOSICION 10 · 2026-11-15T06:24:45 · pedido -
+15/11/2026 06:24:45.292 INFO  Simulacion -   SALIDA_PEDIDO 2 · 2026-11-15T06:24:45 · pedido 4
+15/11/2026 06:24:45.292 INFO  Simulacion - === Consulta propia: ventas por artesano ===
+15/11/2026 06:24:45.294 INFO  Simulacion -   Inés Calvo: 1 pieza(s) única(s), 2 unidad(es) de serie · 114.00 €
+15/11/2026 06:24:45.295 INFO  Simulacion -   Mateo Ruiz: 0 pieza(s) única(s), 6 unidad(es) de serie · 104.00 €
+15/11/2026 06:24:45.295 INFO  Simulacion -   Lucía Ferrer: 0 pieza(s) única(s), 5 unidad(es) de serie · 74.70 €
+15/11/2026 06:24:45.295 INFO  Simulacion -   Tomás Vidal: 0 pieza(s) única(s), 1 unidad(es) de serie · 29.90 €
+15/11/2026 06:24:45.295 INFO  Simulacion - === Cliente con sus direcciones ===
+15/11/2026 06:24:45.298 INFO  Simulacion - Carmen Soto Díaz (2 dirección(es))
+15/11/2026 06:24:45.298 INFO  Simulacion -   Calle Colón 8, 46004 Valencia (principal)
+15/11/2026 06:24:45.298 INFO  Simulacion -   Calle de la Paz 3, 46003 Valencia
+15/11/2026 06:24:45.298 INFO  Simulacion - === Procedimiento almacenado ===
+15/11/2026 06:24:45.299 INFO  InformeService - Llamada al procedimiento resumen_ventas_producto producto=1
+15/11/2026 06:24:45.331 INFO  Simulacion - resumen_ventas_producto(Taza Luna): unidades=3 ingresos=47.70 €
+15/11/2026 06:24:45.331 INFO  HikariDataSource - CalmmaPool - Shutdown initiated...
+15/11/2026 06:24:45.339 INFO  HikariDataSource - CalmmaPool - Shutdown completed.
+15/11/2026 06:24:45.340 INFO  Main - Fin de la aplicación
