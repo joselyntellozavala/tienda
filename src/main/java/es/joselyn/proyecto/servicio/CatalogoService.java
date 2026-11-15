@@ -7,9 +7,12 @@ import es.joselyn.proyecto.dao.ProductoCategoriaDao;
 import es.joselyn.proyecto.dao.ProductoDao;
 import es.joselyn.proyecto.excepcion.NegocioException;
 import es.joselyn.proyecto.modelo.Categoria;
+import es.joselyn.proyecto.modelo.FiltroCatalogo;
 import es.joselyn.proyecto.modelo.Inventario;
 import es.joselyn.proyecto.modelo.NuevoProducto;
+import es.joselyn.proyecto.modelo.PaginaCatalogoDTO;
 import es.joselyn.proyecto.modelo.Producto;
+import es.joselyn.proyecto.modelo.ProductoCatalogoDTO;
 import es.joselyn.proyecto.modelo.TipoPieza;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -110,6 +113,17 @@ public class CatalogoService {
     public List<Categoria> categoriasDe(int productoId) throws SQLException {
         try (Connection conexion = proveedor.getConnection()) {
             return categoriaDao.buscarPorProducto(conexion, productoId);
+        }
+    }
+
+    public PaginaCatalogoDTO consultarCatalogo(FiltroCatalogo filtro, int pagina, int tamanoPagina) throws SQLException {
+        if (pagina < 1 || tamanoPagina < 1 || tamanoPagina > 100) {
+            throw new IllegalArgumentException("La página debe ser positiva y el tamaño debe estar entre 1 y 100");
+        }
+        try (Connection conexion = proveedor.getConnection()) {
+            int total = productoDao.contarCatalogo(conexion, filtro);
+            List<ProductoCatalogoDTO> productos = productoDao.buscarCatalogo(conexion, filtro, pagina, tamanoPagina);
+            return new PaginaCatalogoDTO(pagina, tamanoPagina, total, productos);
         }
     }
 }
