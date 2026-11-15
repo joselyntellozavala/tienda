@@ -1,7 +1,7 @@
 # Gestor de base de datos: MYSQL o H2
 database.engine=H2
 
-# Forma de obtener conexiones
+# Forma de obtener conexiones: DRIVER_MANAGER (conexión directa) o POOL (HikariCP)
 connection.mode=DRIVER_MANAGER
 
 # Simulación: NORMAL o FALLO_TRANSACCION
