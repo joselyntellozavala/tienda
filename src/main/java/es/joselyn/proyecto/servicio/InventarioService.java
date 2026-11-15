@@ -9,6 +9,7 @@ import es.joselyn.proyecto.modelo.Inventario;
 import es.joselyn.proyecto.modelo.MovimientoStock;
 import es.joselyn.proyecto.modelo.NuevoMovimientoStock;
 import es.joselyn.proyecto.modelo.Producto;
+import es.joselyn.proyecto.modelo.ProductoStockBajoDTO;
 import es.joselyn.proyecto.modelo.TipoMovimiento;
 import es.joselyn.proyecto.modelo.TipoPieza;
 import org.apache.logging.log4j.LogManager;
@@ -94,6 +95,12 @@ public class InventarioService {
     public List<MovimientoStock> movimientosDePedido(int pedidoId) throws SQLException {
         try (Connection conexion = proveedor.getConnection()) {
             return movimientoStockDao.buscarPorPedido(conexion, pedidoId);
+        }
+    }
+
+    public List<ProductoStockBajoDTO> productosConStockBajo() throws SQLException {
+        try (Connection conexion = proveedor.getConnection()) {
+            return inventarioDao.buscarStockBajo(conexion);
         }
     }
 }

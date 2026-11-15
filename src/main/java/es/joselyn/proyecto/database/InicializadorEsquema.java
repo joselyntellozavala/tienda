@@ -20,6 +20,9 @@ public class InicializadorEsquema {
 
     private static final Logger log = LogManager.getLogger(InicializadorEsquema.class);
 
+    private static final String FIN_SENTENCIA = ";";
+    private static final String FIN_PROCEDIMIENTO = "//";
+
     private final ConnectionProvider proveedor;
     private final DatabaseEngine gestor;
 
@@ -31,8 +34,21 @@ public class InicializadorEsquema {
     public void reconstruir() throws SQLException {
         String ruta = gestor.getScriptEsquema();
         log.info("Reconstruyendo el esquema con {}", ruta);
+        int ejecutadas = ejecutarScript(ruta, FIN_SENTENCIA);
+        log.info("Esquema reconstruido: {} sentencias ejecutadas", ejecutadas);
 
-        List<String> sentencias = separarSentencias(leerScript(ruta));
+        String rutaProcedimientos = gestor.getScriptProcedimientos();
+        if (rutaProcedimientos == null) {
+            log.info("{}: el procedimiento almacenado es específico de MySQL y no se crea", gestor);
+            return;
+        }
+        log.info("Creando los procedimientos almacenados con {}", rutaProcedimientos);
+        ejecutadas = ejecutarScript(rutaProcedimientos, FIN_PROCEDIMIENTO);
+        log.info("Procedimientos creados: {} sentencias ejecutadas", ejecutadas);
+    }
+
+    private int ejecutarScript(String ruta, String separador) throws SQLException {
+        List<String> sentencias = separarSentencias(leerScript(ruta), separador);
 
         try (Connection conexion = proveedor.getConnection();
              Statement sentencia = conexion.createStatement()) {
@@ -42,7 +58,7 @@ public class InicializadorEsquema {
                 sentencia.executeUpdate(sql);
             }
         }
-        log.info("Esquema reconstruido: {} sentencias ejecutadas", sentencias.size());
+        return sentencias.size();
     }
 
     private String leerScript(String ruta) {
@@ -56,12 +72,12 @@ public class InicializadorEsquema {
         }
     }
 
-    private List<String> separarSentencias(String script) {
+    private List<String> separarSentencias(String script, String separador) {
         String sinComentarios = script.lines()
                 .filter(linea -> !linea.trim().startsWith("--"))
                 .collect(Collectors.joining("\n"));
 
-        return Arrays.stream(sinComentarios.split(";"))
+        return Arrays.stream(sinComentarios.split(separador))
                 .map(String::trim)
                 .filter(sql -> !sql.isEmpty())
                 .toList();

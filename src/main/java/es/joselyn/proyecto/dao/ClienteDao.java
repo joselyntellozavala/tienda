@@ -1,6 +1,7 @@
 package es.joselyn.proyecto.dao;
 
 import es.joselyn.proyecto.modelo.Cliente;
+import es.joselyn.proyecto.modelo.ClienteConDireccionesDTO;
 import es.joselyn.proyecto.modelo.NuevoCliente;
 
 import java.sql.Connection;
@@ -16,4 +17,6 @@ public interface ClienteDao {
     Cliente buscarPorEmail(Connection conexion, String email) throws SQLException;
 
     List<Cliente> buscarTodos(Connection conexion) throws SQLException;
+
+    ClienteConDireccionesDTO buscarConDirecciones(Connection conexion, int clienteId) throws SQLException;
 }
