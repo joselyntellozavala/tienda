@@ -23,6 +23,9 @@ import es.joselyn.proyecto.dao.jdbc.JdbcPagoDao;
 import es.joselyn.proyecto.dao.jdbc.JdbcPedidoDao;
 import es.joselyn.proyecto.dao.jdbc.JdbcProductoCategoriaDao;
 import es.joselyn.proyecto.dao.jdbc.JdbcProductoDao;
+import es.joselyn.proyecto.dao.InformeDao;
+import es.joselyn.proyecto.dao.jdbc.JdbcInformeDao;
+import es.joselyn.proyecto.servicio.InformeService;
 import es.joselyn.proyecto.database.InicializadorEsquema;
 import es.joselyn.proyecto.database.CargaInicial;
 import es.joselyn.proyecto.excepcion.ConfiguracionException;
@@ -72,6 +75,7 @@ public class Main {
                 PedidoDao pedidoDao = new JdbcPedidoDao();
                 LineaPedidoDao lineaPedidoDao = new JdbcLineaPedidoDao();
                 PagoDao pagoDao = new JdbcPagoDao();
+                InformeDao informeDao = new JdbcInformeDao();
 
                 CatalogoService catalogoService = new CatalogoService(proveedor, productoDao, categoriaDao,
                         productoCategoriaDao, inventarioDao);
@@ -81,8 +85,9 @@ public class Main {
                 PedidoService pedidoService = new PedidoService(proveedor, clienteDao, direccionDao, productoDao,
                         inventarioDao, pedidoDao, lineaPedidoDao, movimientoStockDao, pagoDao,
                         config.modoSimulacion());
+                InformeService informeService = new InformeService(proveedor, informeDao, config.gestorBaseDatos());
 
-                new Simulacion(catalogoService, clienteService, inventarioService, pedidoService)
+                new Simulacion(catalogoService, clienteService, inventarioService, pedidoService, informeService)
                         .ejecutar(config.modoSimulacion());
             }
             log.info("Fin de la aplicación");
