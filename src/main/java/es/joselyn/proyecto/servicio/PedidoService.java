@@ -26,6 +26,8 @@ import es.joselyn.proyecto.modelo.Pago;
 import es.joselyn.proyecto.modelo.Pedido;
 import es.joselyn.proyecto.modelo.Producto;
 import es.joselyn.proyecto.modelo.TipoMovimiento;
+import es.joselyn.proyecto.modelo.DetallePedidoDTO;
+import es.joselyn.proyecto.modelo.ResumenPedidoDTO;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -223,6 +225,18 @@ public class PedidoService {
     public Pago pagoDe(int pedidoId) throws SQLException {
         try (Connection conexion = proveedor.getConnection()) {
             return pagoDao.buscarPorPedido(conexion, pedidoId);
+        }
+    }
+
+    public DetallePedidoDTO detalleDe(int pedidoId) throws SQLException {
+        try (Connection conexion = proveedor.getConnection()) {
+            return pedidoDao.buscarDetalle(conexion, pedidoId);
+        }
+    }
+
+    public List<ResumenPedidoDTO> historialDe(int clienteId) throws SQLException {
+        try (Connection conexion = proveedor.getConnection()) {
+            return pedidoDao.buscarHistorial(conexion, clienteId);
         }
     }
 
